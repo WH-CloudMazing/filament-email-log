@@ -1,9 +1,9 @@
 <?php
 
-namespace Ramnzys\FilamentEmailLog\Database\Factories;
+namespace Cloudmazing\FilamentEmailLog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Ramnzys\FilamentEmailLog\Models\Email;
+use Cloudmazing\FilamentEmailLog\Models\Email;
 
 class EmailFactory extends Factory
 {

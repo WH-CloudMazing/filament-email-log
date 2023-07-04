@@ -1,9 +1,9 @@
 <?php
 
-namespace Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource\Pages;
+namespace Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages;
 
 use Filament\Resources\Pages\ViewRecord;
-use Ramnzys\FilamentEmailLog\Filament\Resources\EmailResource;
+use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource;
 
 class ViewEmail extends ViewRecord
 {

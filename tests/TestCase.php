@@ -1,6 +1,6 @@
 <?php
 
-namespace Ramnzys\FilamentEmailLog\Tests;
+namespace Cloudmazing\FilamentEmailLog\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -13,9 +13,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Ramnzys\FilamentEmailLog\FilamentEmailLogServiceProvider;
-use Ramnzys\FilamentEmailLog\Providers\EmailMessageServiceProvider;
-use Ramnzys\FilamentEmailLog\Tests\Models\User;
+use Cloudmazing\FilamentEmailLog\FilamentEmailLogServiceProvider;
+use Cloudmazing\FilamentEmailLog\Providers\EmailMessageServiceProvider;
+use Cloudmazing\FilamentEmailLog\Tests\Models\User;
 
 class TestCase extends Orchestra
 {
@@ -28,7 +28,7 @@ class TestCase extends Orchestra
         $this->setUpDatabase($this->app);
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Ramnzys\\FilamentEmailLog\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Cloudmazing\\FilamentEmailLog\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

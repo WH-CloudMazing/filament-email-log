@@ -1,8 +1,8 @@
 <?php
 
-namespace Ramnzys\FilamentEmailLog\Listeners;
+namespace Cloudmazing\FilamentEmailLog\Listeners;
 
-use Ramnzys\FilamentEmailLog\Models\Email;
+use Cloudmazing\FilamentEmailLog\Models\Email;
 
 class FilamentEmailLogger
 {

@@ -42,13 +42,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Ramnzys\\FilamentEmailLog\\": "src",
-            "Ramnzys\\FilamentEmailLog\\Database\\Factories\\": "database/factories"
+            "Cloudmazing\\FilamentEmailLog\\": "src",
+            "Cloudmazing\\FilamentEmailLog\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ramnzys\\FilamentEmailLog\\Tests\\": "tests"
+            "Cloudmazing\\FilamentEmailLog\\Tests\\": "tests"
         }
     },
     "config": {
@@ -58,10 +58,10 @@
     "extra": {
         "laravel": {
             "aliases": {
-                "FilamentEmailLog": "Ramnzys\\FilamentEmailLog\\Facades\\FilamentEmailLog"
+                "FilamentEmailLog": "Cloudmazing\\FilamentEmailLog\\Facades\\FilamentEmailLog"
             },
             "providers": [
-                "Ramnzys\\FilamentEmailLog\\FilamentEmailLogServiceProvider"
+                "Cloudmazing\\FilamentEmailLog\\FilamentEmailLogServiceProvider"
             ]
         }
     },

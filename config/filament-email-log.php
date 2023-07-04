@@ -1,6 +1,6 @@
 <?php
 
-// config for Ramnzys/FilamentEmailLog
+// config for Cloudmazing/FilamentEmailLog
 return [
 
     'resource' => [

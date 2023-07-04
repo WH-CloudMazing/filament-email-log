@@ -52,7 +52,7 @@ This package will automatically register the `EmailResource`. You will be able t
 
 **Group and sort order**. You can customize the navigation group for the `EmailResource` by publishing the configuration file and updating the `resource.group` and `resource.sort` values.
 
-**Prunable model**. You can customize how many days to keep the email in the database by updating the `keep_email_for_days` value. Then you can use or schedule the command `artisan model:prune --model="Ramnzys\FilamentEmailLog\Models\Email"`. This will delete emails older than `keep_email_for_days` days old.
+**Prunable model**. You can customize how many days to keep the email in the database by updating the `keep_email_for_days` value. Then you can use or schedule the command `artisan model:prune --model="Cloudmazing\FilamentEmailLog\Models\Email"`. This will delete emails older than `keep_email_for_days` days old.
 ## Testing
 
 ```bash
