@@ -1,10 +1,10 @@
 
 ![](https://banners.beyondco.de/filament-email-log.png?theme=light&packageManager=composer+require&packageName=ramnzys%2Ffilament-email-log&pattern=autumn&style=style_1&description=Laravel+sent+email+log+on+filament+dashboard&md=1&showWatermark=1&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/ramnzys/filament-email-log.svg?style=flat-square)](https://packagist.org/packages/ramnzys/filament-email-log)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ramnzys/filament-email-log/run-tests?label=tests)](https://github.com/ramnzys/filament-email-log/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ramnzys/filament-email-log/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ramnzys/filament-email-log/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/ramnzys/filament-email-log.svg?style=flat-square)](https://packagist.org/packages/ramnzys/filament-email-log)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/cloudmazing/filament-email-log.svg?style=flat-square)](https://packagist.org/packages/cloudmazing/filament-email-log)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/cloudmazing/filament-email-log/run-tests?label=tests)](https://github.com/WH-CloudMazing/filament-email-log/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/cloudmazing/filament-email-log/Check%20&%20fix%20styling?label=code%20style)](https://github.com/WH-CloudMazing/filament-email-log/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/cloudmazing/filament-email-log.svg?style=flat-square)](https://packagist.org/packages/cloudmazing/filament-email-log)
 
 This package provides a Filament resource to view all Laravel outgoing emails. It also provides a Model for the database stored emails.
 
@@ -13,7 +13,7 @@ This package provides a Filament resource to view all Laravel outgoing emails. I
 You can install the package via composer:
 
 ```bash
-composer require ramnzys/filament-email-log
+composer require cloudmazing/filament-email-log
 ```
 
 You can publish and run the migrations with:

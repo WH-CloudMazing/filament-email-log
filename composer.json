@@ -1,5 +1,5 @@
 {
-    "name": "ramnzys/filament-email-log",
+    "name": "cloudmazing/filament-email-log",
     "description": "This package provides a Filament resource to view all Laravel outgoing emails.",
     "license": "MIT",
     "keywords": [
@@ -14,7 +14,7 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/ramnzys/filament-email-log",
+    "homepage": "https://github.com/WH-CloudMazing/filament-email-log",
     "require": {
         "php": "^8.1",
         "filament/filament": "^2.12",
