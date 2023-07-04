@@ -4,6 +4,7 @@
 return [
 
     'resource' => [
+        'class' => \Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource::class,
         'group' => null,
         'sort' => null,
     ],

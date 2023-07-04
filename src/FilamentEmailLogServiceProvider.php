@@ -5,15 +5,12 @@ namespace Cloudmazing\FilamentEmailLog;
 use Filament\PluginServiceProvider;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource;
 use Cloudmazing\FilamentEmailLog\Providers\EmailMessageServiceProvider;
+use Illuminate\Support\Facades\Config;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentEmailLogServiceProvider extends PluginServiceProvider
 {
     public static string $name = 'filament-email-log';
-
-    protected array $resources = [
-        EmailResource::class,
-    ];
 
     public function configurePackage(Package $package): void
     {
@@ -34,5 +31,12 @@ class FilamentEmailLogServiceProvider extends PluginServiceProvider
             ]);
 
         $this->app->register(EmailMessageServiceProvider::class);
+    }
+
+    protected function getResources(): array
+    {
+        return [
+            Config::get('filament-email-log.resource.class', EmailResource::class)
+        ];
     }
 }
