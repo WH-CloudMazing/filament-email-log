@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Config;
  * @property string $html_body
  * @property string $raw_body
  * @property string $sent_debug_info
+ * @property string|null $mailer
  * @property \Illuminate\Support\Carbon|null $created_at
  */
 class Email extends Model

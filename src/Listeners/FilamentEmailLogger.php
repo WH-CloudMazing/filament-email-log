@@ -3,26 +3,11 @@
 namespace Cloudmazing\FilamentEmailLog\Listeners;
 
 use Cloudmazing\FilamentEmailLog\Models\Email;
+use Illuminate\Mail\Events\MessageSent;
 
 class FilamentEmailLogger
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
-     */
-    public function handle($event)
+    public function handle(MessageSent $event)
     {
         $rawMessage = $event->sent->getSymfonySentMessage();
         $email = $event->message;
@@ -37,6 +22,7 @@ class FilamentEmailLogger
             'text_body' => $email->getTextBody(),
             'raw_body' => $rawMessage->getMessage()->toString(),
             'sent_debug_info' => $rawMessage->getDebug(),
+            'mailer' => $event->data['mailer'],
         ]);
     }
 
