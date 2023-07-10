@@ -47,6 +47,6 @@ class Email extends Model
 
     public function mailableSubject(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo('mailable_subject');
     }
 }
