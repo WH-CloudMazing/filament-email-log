@@ -23,6 +23,8 @@ class FilamentEmailLogger
             'raw_body' => $rawMessage->getMessage()->toString(),
             'sent_debug_info' => $rawMessage->getDebug(),
             'mailer' => $event->data['mailer'],
+            'mailable_subject_type' => $event->data['mailable_subject']?->getMorphClass(),
+            'mailable_subject_id' => $event->data['mailable_subject']?->id ?? null,
         ]);
     }
 

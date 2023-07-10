@@ -5,6 +5,7 @@ namespace Cloudmazing\FilamentEmailLog\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -20,7 +21,10 @@ use Illuminate\Support\Facades\Config;
  * @property string $raw_body
  * @property string $sent_debug_info
  * @property string|null $mailer
+ * @property string|null $mailable_subject_type
+ * @property int|null $mailable_subject_id
  * @property \Illuminate\Support\Carbon|null $created_at
+ * @property-read Model|null $mailableSubject
  */
 class Email extends Model
 {
@@ -39,5 +43,10 @@ class Email extends Model
     public function prunable()
     {
         return static::where('created_at', '<=', now()->subDays(Config::get('filament-email-log.keep_email_for_days')));
+    }
+
+    public function mailableSubject(): MorphTo
+    {
+        return $this->morphTo();
     }
 }
