@@ -48,35 +48,50 @@ class EmailResource extends Resource
         return $form
             ->schema([
                 Fieldset::make('Envelope')->schema([
-                    TextInput::make('created_at'),
-                    TextInput::make('from'),
-                    TextInput::make('to'),
-                    TextInput::make('cc'),
-                    TextInput::make('subject')->columnSpan(2),
+                    TextInput::make('created_at')
+                        ->label(__('filament-email-log::filament.fields.created_at')),
+                    TextInput::make('from')
+                        ->label(__('filament-email-log::filament.fields.from')),
+                    TextInput::make('to')
+                        ->label(__('filament-email-log::filament.fields.to')),
+                    TextInput::make('cc')
+                        ->label(__('filament-email-log::filament.fields.cc')),
+                    TextInput::make('subject')->columnSpan(2)
+                        ->label(__('filament-email-log::filament.fields.subject')),
                 ])->columns(3),
-                Tabs::make('Content')->tabs([
-                    Tab::make('HTML')
-                        ->schema([
-                            ViewField::make('html_body')->disableLabel()
-                                ->view('filament-email-log::HtmlEmailView'),
-                        ]),
-                    Tab::make('Text')
-                        ->schema([
-                            Textarea::make('text_body')->disableLabel(),
-                        ]),
-                    Tab::make('Raw')
-                        ->schema([
-                            Textarea::make('raw_body')
-                                ->extraAttributes(['class' => 'font-mono text-xs'])
-                                ->disableLabel(),
-                        ]),
-                    Tab::make('Debug information')
-                        ->schema([
-                            Textarea::make('sent_debug_info')
-                                ->extraAttributes(['class' => 'font-mono text-xs'])
-                                ->disableLabel(),
-                        ]),
-                ])->columnSpan(2),
+                Tabs::make('Content')
+                    ->label(__('filament-email-log::filament.fields.content'))
+                    ->tabs([
+                        Tab::make('HTML')
+                            ->label(__('filament-email-log::filament.fields.html'))
+                            ->schema([
+                                ViewField::make('html_body')->disableLabel()
+                                    ->label(__('filament-email-log::filament.fields.html_body'))
+                                    ->view('filament-email-log::HtmlEmailView'),
+                            ]),
+                        Tab::make('Text')
+                            ->label(__('filament-email-log::filament.fields.text'))
+                            ->schema([
+                                Textarea::make('text_body')->disableLabel()
+                                    ->label(__('filament-email-log::filament.fields.text_body')),
+                            ]),
+                        Tab::make('Raw')
+                            ->label(__('filament-email-log::filament.fields.raw'))
+                            ->schema([
+                                Textarea::make('raw_body')
+                                    ->label(__('filament-email-log::filament.fields.raw_body'))
+                                    ->extraAttributes(['class' => 'font-mono text-xs'])
+                                    ->disableLabel(),
+                            ]),
+                        Tab::make('Debug information')
+                            ->label(__('filament-email-log::filament.fields.debug_information'))
+                            ->schema([
+                                Textarea::make('sent_debug_info')
+                                    ->label(__('filament-email-log::filament.fields.sent_debug_info'))
+                                    ->extraAttributes(['class' => 'font-mono text-xs'])
+                                    ->disableLabel(),
+                            ]),
+                    ])->columnSpan(2),
             ]);
     }
 
@@ -85,21 +100,21 @@ class EmailResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('created_at')
-                    ->label(__('Date and time sent'))
+                    ->label(__('filament-email-log::filament.fields.created_at'))
                     ->sortable(),
                 TextColumn::make('from')
-                    ->label(__('From'))
+                    ->label(__('filament-email-log::filament.fields.from'))
                     ->toggleable()
                     ->searchable(),
                 TextColumn::make('to')
-                    ->label(__('To'))
+                    ->label(__('filament-email-log::filament.fields.to'))
                     ->searchable(),
                 TextColumn::make('cc')
-                    ->label(__('Cc'))
+                    ->label(__('filament-email-log::filament.fields.cc'))
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 TextColumn::make('subject')
-                    ->label(__('Subject'))
+                    ->label(__('filament-email-log::filament.fields.subject'))
                     ->limit(50)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
