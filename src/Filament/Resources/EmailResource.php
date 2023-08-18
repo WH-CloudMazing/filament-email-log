@@ -33,6 +33,11 @@ class EmailResource extends Resource
         return __('filament-email-log::filament.resources.emails');
     }
 
+    protected static function getNavigationLabel(): string
+    {
+        return static::getPluralModelLabel();
+    }
+
     protected static function getNavigationGroup(): ?string
     {
         return Config::get('filament-email-log.resource.group') ?? parent::getNavigationGroup();
