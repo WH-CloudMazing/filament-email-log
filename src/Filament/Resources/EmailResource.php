@@ -23,6 +23,16 @@ class EmailResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-mail';
 
+    public static function getModelLabel(): string
+    {
+        return __('filament-email-log::filament.resources.email');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('filament-email-log::filament.resources.emails');
+    }
+
     protected static function getNavigationGroup(): ?string
     {
         return Config::get('filament-email-log.resource.group') ?? parent::getNavigationGroup();
