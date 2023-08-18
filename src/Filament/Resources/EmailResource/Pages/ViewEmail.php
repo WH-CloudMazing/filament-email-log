@@ -12,4 +12,9 @@ class ViewEmail extends ViewRecord
     {
         return Config::get('filament-email-log.resource.class', EmailResource::class);
     }
+
+    protected function getTitle(): string
+    {
+        return __('filament-email-log::filament.resources.email');
+    }
 }

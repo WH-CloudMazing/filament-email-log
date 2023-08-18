@@ -12,4 +12,9 @@ class ListEmails extends ListRecords
     {
         return Config::get('filament-email-log.resource.class', EmailResource::class);
     }
+
+    protected function getTitle(): string
+    {
+        return EmailResource::getPluralModelLabel();
+    }
 }
