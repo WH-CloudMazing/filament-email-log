@@ -12,6 +12,8 @@ class FilamentEmailLogger
         $rawMessage = $event->sent->getSymfonySentMessage();
         $email = $event->message;
 
+        $subject = $event->data['mailable_subject'] ?? null;
+
         Email::create([
             'from' => $this->RecipientsToString($email->getFrom()),
             'to' => $this->RecipientsToString($email->getTo()),
@@ -23,8 +25,8 @@ class FilamentEmailLogger
             'raw_body' => $rawMessage->getMessage()->toString(),
             'sent_debug_info' => $rawMessage->getDebug(),
             'mailer' => $event->data['mailer'],
-            'mailable_subject_type' => $event->data['mailable_subject']?->getMorphClass(),
-            'mailable_subject_id' => $event->data['mailable_subject']?->id ?? null,
+            'mailable_subject_type' => $subject?->getMorphClass(),
+            'mailable_subject_id' => $subject?->id ?? null,
         ]);
     }
 
