@@ -2,28 +2,20 @@
 
 namespace Cloudmazing\FilamentEmailLog;
 
-use Filament\PluginServiceProvider;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource;
 use Cloudmazing\FilamentEmailLog\Providers\EmailMessageServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FilamentEmailLogServiceProvider extends PluginServiceProvider
+class FilamentEmailLogServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-email-log';
 
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-
-        parent::configurePackage($package);
-
         $package
-            ->name('filament-email-log')
+            ->name(static::$name)
             ->hasConfigFile('filament-email-log')
             ->hasTranslations()
             ->hasMigrations([

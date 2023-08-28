@@ -8,12 +8,10 @@ use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ViewField;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Resources\Table;
+use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
@@ -35,17 +33,17 @@ class EmailResource extends Resource
         return __('filament-email-log::filament.resources.emails');
     }
 
-    protected static function getNavigationLabel(): string
+    public static function getNavigationLabel(): string
     {
         return static::getPluralModelLabel();
     }
 
-    protected static function getNavigationGroup(): ?string
+    public static function getNavigationGroup(): ?string
     {
         return Config::get('filament-email-log.resource.group') ?? parent::getNavigationGroup();
     }
 
-    protected static function getNavigationSort(): ?int
+    public static function getNavigationSort(): ?int
     {
         return Config::get('filament-email-log.resource.sort') ?? parent::getNavigationSort();
     }
@@ -72,14 +70,14 @@ class EmailResource extends Resource
                         Tab::make('HTML')
                             ->label(__('filament-email-log::filament.fields.html'))
                             ->schema([
-                                ViewField::make('html_body')->disableLabel()
+                                ViewField::make('html_body')->hiddenLabel()
                                     ->label(__('filament-email-log::filament.fields.html_body'))
                                     ->view('filament-email-log::HtmlEmailView'),
                             ]),
                         Tab::make('Text')
                             ->label(__('filament-email-log::filament.fields.text'))
                             ->schema([
-                                Textarea::make('text_body')->disableLabel()
+                                Textarea::make('text_body')->hiddenLabel()
                                     ->label(__('filament-email-log::filament.fields.text_body')),
                             ]),
                         Tab::make('Raw')
@@ -88,7 +86,7 @@ class EmailResource extends Resource
                                 Textarea::make('raw_body')
                                     ->label(__('filament-email-log::filament.fields.raw_body'))
                                     ->extraAttributes(['class' => 'font-mono text-xs'])
-                                    ->disableLabel(),
+                                    ->hiddenLabel(),
                             ]),
                         Tab::make('Debug information')
                             ->label(__('filament-email-log::filament.fields.debug_information'))
@@ -96,7 +94,7 @@ class EmailResource extends Resource
                                 Textarea::make('sent_debug_info')
                                     ->label(__('filament-email-log::filament.fields.sent_debug_info'))
                                     ->extraAttributes(['class' => 'font-mono text-xs'])
-                                    ->disableLabel(),
+                                    ->hiddenLabel(),
                             ]),
                     ])->columnSpan(2),
             ]);
@@ -125,7 +123,7 @@ class EmailResource extends Resource
                     ->limit(50)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getLimit()) {
+                        if (strlen($state) <= $column->getCharacterLimit()) {
                             return null;
                         }
 
