@@ -16,6 +16,7 @@ class FilamentEmailLogServiceProvider extends PackageServiceProvider
             ->name(static::$name)
             ->hasConfigFile('filament-email-log')
             ->hasTranslations()
+            ->hasViews()
             ->hasMigrations([
                 'create_filament_email_log_table',
                 'add_raw_and_debug_fields_to_filament_email_log_table',
