@@ -7,6 +7,7 @@ use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmai
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Illuminate\Support\Facades\Config;
 
 class FilamentEmailLogPlugin implements Plugin
 {
@@ -19,7 +20,7 @@ class FilamentEmailLogPlugin implements Plugin
     {
         $panel
             ->resources([
-                EmailResource::class,
+                Config::get('filament-email-log.resource.class', EmailResource::class),
             ])
             ->pages([
                 ListEmails::class,
