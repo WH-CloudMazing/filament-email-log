@@ -49,4 +49,9 @@ class Email extends Model
     {
         return $this->morphTo('mailable_subject');
     }
+
+    public static function log(array $data): static
+    {
+        return static::create($data);
+    }
 }

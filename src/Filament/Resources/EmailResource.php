@@ -15,13 +15,15 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Config;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
 use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
-use Cloudmazing\FilamentEmailLog\Models\Email;
 
 class EmailResource extends Resource
 {
-    protected static ?string $model = Email::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
+
+    public static function getModel(): string
+    {
+        return config('filament-email-log.models.email');
+    }
 
     public static function getModelLabel(): string
     {

@@ -2,7 +2,6 @@
 
 namespace Cloudmazing\FilamentEmailLog\Listeners;
 
-use Cloudmazing\FilamentEmailLog\Models\Email;
 use Illuminate\Mail\Events\MessageSent;
 
 class FilamentEmailLogger
@@ -14,7 +13,7 @@ class FilamentEmailLogger
 
         $subject = $event->data['mailable_subject'] ?? null;
 
-        Email::create([
+        config('filament-email-log.models.email')::log([
             'from' => $this->RecipientsToString($email->getFrom()),
             'to' => $this->RecipientsToString($email->getTo()),
             'cc' => $this->RecipientsToString($email->getCc()),

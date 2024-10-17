@@ -3,6 +3,10 @@
 // config for Cloudmazing/FilamentEmailLog
 return [
 
+    'models' => [
+        'email' => \Cloudmazing\FilamentEmailLog\Models\Email::class,
+    ],
+
     'resource' => [
         'class' => \Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource::class,
         'group' => null,
