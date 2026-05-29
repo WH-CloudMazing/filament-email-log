@@ -2,23 +2,24 @@
 
 namespace Cloudmazing\FilamentEmailLog\Filament\Resources;
 
-use Filament\Forms\Components\Fieldset;
+use BackedEnum;
+use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
+use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
+use Filament\Schemas\Components\Fieldset;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ViewField;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Table;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Illuminate\Support\Facades\Config;
-use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ListEmails;
-use Cloudmazing\FilamentEmailLog\Filament\Resources\EmailResource\Pages\ViewEmail;
 
 class EmailResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-envelope';
 
     public static function getModel(): string
     {
@@ -50,11 +51,11 @@ class EmailResource extends Resource
         return Config::get('filament-email-log.resource.sort') ?? parent::getNavigationSort();
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Fieldset::make('Envelope')->schema([
+        return $schema
+            ->components([
+                Fieldset::make('Envelope')->components([
                     TextInput::make('created_at')
                         ->label(__('filament-email-log::filament.fields.created_at')),
                     TextInput::make('from')
@@ -71,20 +72,20 @@ class EmailResource extends Resource
                     ->tabs([
                         Tab::make('HTML')
                             ->label(__('filament-email-log::filament.fields.html'))
-                            ->schema([
+                            ->components([
                                 ViewField::make('html_body')->hiddenLabel()
                                     ->label(__('filament-email-log::filament.fields.html_body'))
                                     ->view('filament-email-log::HtmlEmailView'),
                             ]),
                         Tab::make('Text')
                             ->label(__('filament-email-log::filament.fields.text'))
-                            ->schema([
+                            ->components([
                                 Textarea::make('text_body')->hiddenLabel()
                                     ->label(__('filament-email-log::filament.fields.text_body')),
                             ]),
                         Tab::make('Raw')
                             ->label(__('filament-email-log::filament.fields.raw'))
-                            ->schema([
+                            ->components([
                                 Textarea::make('raw_body')
                                     ->label(__('filament-email-log::filament.fields.raw_body'))
                                     ->extraAttributes(['class' => 'font-mono text-xs'])
@@ -92,7 +93,7 @@ class EmailResource extends Resource
                             ]),
                         Tab::make('Debug information')
                             ->label(__('filament-email-log::filament.fields.debug_information'))
-                            ->schema([
+                            ->components([
                                 Textarea::make('sent_debug_info')
                                     ->label(__('filament-email-log::filament.fields.sent_debug_info'))
                                     ->extraAttributes(['class' => 'font-mono text-xs'])
@@ -133,7 +134,7 @@ class EmailResource extends Resource
                     })
                     ->searchable(),
             ])
-            ->bulkActions([])
+            ->toolbarActions([])
             ->filters([
                 //
             ])
